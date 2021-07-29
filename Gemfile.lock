@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ffi (1.15.3)
+    kafka (0.5.2)
+      ffi
+      mini_portile2
+    mini_portile2 (2.6.1)
+
+PLATFORMS
+  x86_64-darwin-20
+
+DEPENDENCIES
+  kafka (~> 0.5.2)
+
+BUNDLED WITH
+   2.2.16
