@@ -1,0 +1,53 @@
+version: '3.5'
+networks:
+  metalbox:
+    name: metalbox
+
+volumes:
+  metalbox:
+    name: metalbox
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.12.1
+    hostname: elasticsearch
+    container_name: elasticsearch
+    ports:
+      - '9200:9200'
+    environment:
+    - discovery.type=single-node
+    networks:
+      - metalbox
+  kafka_connect:
+    container_name: kafka-connect
+    hostname: kafka-connect
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8083
+    networks:
+      - metalbox
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: "localhost:9092"
+      CONNECT_PLUGIN_PATH: "/usr/share/confluent-hub-components,/usr/share/java"
+      CONNECT_REST_ADVERTISED_HOST_NAME: "kafka-connect"
+        #      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+        #CONNECT_REST_PORT: 8083
+      CONNECT_ERRORS_LOG_INCLUDE_MESSAGES: "true"
+      CONNECT_KEY_CONVERTER: "org.apache.kafka.connect.storage.StringConverter"
+      CONNECT_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      # CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "http://kafka-schema-registry:8081"
+      #      VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "http://kafka-schema-registry:8081"
+      CONNECT_GROUP_ID: brain-elasticsearch-group-01
+      CONNECT_CONFIG_STORAGE_TOPIC: docker-connect-configs
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_FLUSH_INTERVAL_MS: 10000
+      CONNECT_OFFSET_STORAGE_TOPIC: docker-connect-offsets
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_INTERNAL_KEY_CONVERTER_SCHEMAS_ENABLE: "false"
+      CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_INTERNAL_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
