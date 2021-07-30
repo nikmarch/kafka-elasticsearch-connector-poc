@@ -9,6 +9,7 @@ def search_by_full_address(address)
      {"query"=>address,
       "type"=>"bool_prefix",
       "operator"=>"and",
+      "fuzziness"=> 1,
       "fields"=>
      ["addresses.full_address",
       "addresses.full_address._2gram",
