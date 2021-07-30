@@ -1,0 +1,69 @@
+{
+  "aliases": {},
+  "mappings": {
+    "properties": {
+      "uuid": {
+        "type": "keyword"
+      },
+      "email": {
+        "type": "keyword"
+      },
+      "addresses": {
+        "properties": {
+          "full_address": {
+            "analyzer": "address_standard",
+            "type": "search_as_you_type"
+          }
+        }
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_shards": "1",
+      "analysis": {
+        "filter": {
+          "address_common_synonym_filter": {
+            "type": "synonym",
+            "synonyms": [
+              "n, north => north",
+              "s, south => south",
+              "w, west => west",
+              "e, east => east",
+              "st, street => street",
+              "rd, road => road",
+              "dr, drive => drive",
+              "pl, place => place",
+              "ave, avenue => avenue",
+              "pkwy, parkway => parkway",
+              "blvd, boulevard => boulevard",
+              "sq, square => square",
+              "apt, apartment => apartment",
+              "1st, first => 1st",
+              "2nd, second => 2nd",
+              "3rd, third => 3rd",
+              "4th, fourth => 4th",
+              "5th, fifth => 5th",
+              "6th, sixth => 6th",
+              "7th, seventh => 7th",
+              "8th, eighth => 8th",
+              "9th, nineth => 9th",
+              "10th, tenth => 10th"
+            ]
+          }
+        },
+        "analyzer": {
+          "address_standard": {
+            "filter": [
+              "lowercase",
+              "address_common_synonym_filter"
+            ],
+            "tokenizer": "standard"
+          }
+        },
+        "tokenizer": {}
+      },
+      "number_of_replicas": "2"
+    }
+  }
+}
