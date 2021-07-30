@@ -1,6 +1,6 @@
 {
   "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
-  "connection.url": "localhost:9200",
+  "connection.url": "elasticsearch:9200",
   "read.timeout.ms": 600000,
   "tasks.max": "8",
   "type.name": "_doc",

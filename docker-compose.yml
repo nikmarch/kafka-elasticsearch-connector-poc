@@ -5,11 +5,13 @@ volumes:
 
 services:
   elasticsearch:
-    image: elasticsearch:7.12.1
+    image: elasticsearch:7.13.4
     ports:
       - 9200:9200
     environment:
-      "discovery.type": single-node
+      - "discovery.type=single-node"
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
 
   kafka_connect:
     build:
@@ -20,7 +22,7 @@ services:
     environment:
       CONNECT_BOOTSTRAP_SERVERS: "kafka:19092"
       CONNECT_PLUGIN_PATH: /usr/share/confluent-hub-components,/usr/share/java
-      CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
+      CONNECT_REST_ADVERTISED_HOST_NAME: kafka_connect
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
       CONNECT_REST_PORT: 8083
       CONNECT_ERRORS_LOG_INCLUDE_MESSAGES: "true"
