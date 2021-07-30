@@ -1,0 +1,14 @@
+{
+  "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+  "connection.url": "localhost:9200",
+  "read.timeout.ms": 600000,
+  "tasks.max": "8",
+  "type.name": "_doc",
+  "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "value.converter.schemas.enable": false,
+  "behavior.on.malformed.documents": "warn",
+  "behavior.on.null.values": "delete",
+  "drop.invalid.message": true,
+  "topics": "test_topic"
+}
