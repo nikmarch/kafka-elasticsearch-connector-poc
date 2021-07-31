@@ -10,11 +10,10 @@ class KafkaProducer
   end
 
   def push_customer(customer)
-    puts customer
     key = customer.fetch('uuid')
     payload = JSON.generate customer
     @kafka.deliver_message payload, topic: @topic, key: key
-    puts "Customer profile: #{key} published"
-    puts payload
+    puts "#{key} published"
+    # puts payload
   end
 end
