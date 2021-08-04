@@ -1,3 +1,4 @@
+require 'json'
 require 'rest-client'
 
 topic = 'test_topic'
@@ -23,6 +24,6 @@ connector_body = {
 }
 
 connector_result = RestClient.put(connector_url,
-                                  connector_body,
+                                  JSON.generate(connector_body),
                                   {content_type: :json, accept: :json})
 puts connector_result
