@@ -1,4 +1,4 @@
-FROM confluentinc/cp-kafka-connect:latest
+FROM confluentinc/cp-kafka-connect:5.5.4
 
 ENV KAFKA_HEAP_OPTS="-Xms512m -Xmx1g"
 
