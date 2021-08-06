@@ -13,3 +13,16 @@ To automatically launch the process from docker up to exec rspec run:
 ```sh
 ./setup_and_run.sh
 ```
+
+## Test Cases
+When reported about an issue with searching result relevance, create a new test case with expected profile to be found and query required to find it:
+```yaml
+- uuid: 7CFA44CC-7149-4496-B0D1-8933C0616139
+  email: mrnutt@shell.com
+  addresses:
+    - full_address: John Doe 123 first St. Apt A San Jose CA, 20112
+    - full_address: John Doe 4566 2nd St. Apt A Springfield WA, 80112
+  test_cases:
+    - john doe 20112
+    - john doe second street 80112
+```
