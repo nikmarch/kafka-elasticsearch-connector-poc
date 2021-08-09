@@ -17,5 +17,5 @@ bundle exec ruby lib/seed/test_cases.rb
 echo -e "\nSetup fake cases."
 bundle exec ruby lib/seed/fake_cases.rb
 
-echo -e "\nSetup fake mapping and kafka connector."
+echo -e "\nSetup custom mapping and kafka connector."
 bundle exec ruby lib/build_connector.rb

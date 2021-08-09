@@ -17,7 +17,7 @@ end
 
 pusher = KafkaProducer.new
 
-200.times.map do
+2000.times.map do
   pusher.push_customer generate_fake_customer
 end
 
