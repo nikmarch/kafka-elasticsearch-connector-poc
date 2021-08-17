@@ -1,7 +1,4 @@
 version: "3.5"
-volumes:
-  kafka-poc:
-    name: "kafka-poc"
 
 services:
   elasticsearch:
@@ -19,6 +16,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8083:8083
+    depends_on:
+      - kafka
+      - elasticsearch
     environment:
       CONNECT_BOOTSTRAP_SERVERS: "kafka:19092"
       CONNECT_PLUGIN_PATH: "/usr/share/confluent-hub-components,/usr/share/java"

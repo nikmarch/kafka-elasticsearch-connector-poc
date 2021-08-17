@@ -1,4 +1,7 @@
 #!/bin/bash
+echo -e "\Install gems for testing."
+bundle install
+
 echo -e "\nWaiting for Elasticsearch."
 until $(curl --output /dev/null --silent --head --fail http://localhost:9200); do
     printf '.'
