@@ -3,13 +3,13 @@ echo -e "\Install gems for testing."
 bundle install
 
 echo -e "\nWaiting for Elasticsearch."
-until $(curl --output /dev/null --silent --head --fail http://localhost:9200); do
+until $(curl --output /dev/null --silent --head --fail http://elasticsearch:9200); do
     printf '.'
     sleep 1
 done
 
 echo -e "\nWaiting for Kafka Connector."
-until $(curl --output /dev/null --silent --head --fail http://localhost:8083); do
+until $(curl --output /dev/null --silent --head --fail http://kafka_connect:8083); do
     printf '.'
     sleep 1
 done

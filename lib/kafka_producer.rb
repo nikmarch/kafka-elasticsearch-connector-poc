@@ -6,7 +6,7 @@ require 'faker'
 class KafkaProducer
   def initialize
     @topic = 'test_topic'
-    @kafka = Kafka.new "localhost:9092", client_id: "console_test"
+    @kafka = Kafka.new "kafka:9092", client_id: "console_test"
   end
 
   def push_customer(customer, attempt = 1)

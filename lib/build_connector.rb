@@ -3,11 +3,11 @@ require 'rest-client'
 
 topic = 'test_topic'
 
-mapping_url = 'http://localhost:9200/test_topic'
+mapping_url = 'http://elasticsearch:9200/test_topic'
 mapping_results = RestClient.put(mapping_url, File.read('./lib/mapping.json'), {content_type: :json, accept: :json})
 puts mapping_results
 
-connector_url = 'http://localhost:8083/connectors/test_topic/config'
+connector_url = 'http://kafka_connect:8083/connectors/test_topic/config'
 connector_body = {
   "connector.class" => "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
   "connection.url" => "elasticsearch:9200",

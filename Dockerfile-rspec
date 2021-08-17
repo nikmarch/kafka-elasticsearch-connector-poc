@@ -1,0 +1,10 @@
+FROM ruby:latest
+
+COPY . .
+
+RUN bundle install
+RUN ./setup.sh
+RUN  echo -e "\nWait for connecor to transfer data to Elasticsearch\n" && \
+RUN  sleep 30 && \
+RUN  echo -e "\nRun searching test cases\n" && \
+RUN  bundle exec rspec
