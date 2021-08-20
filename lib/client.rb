@@ -2,7 +2,7 @@ require 'rest-client'
 require 'json'
 
 def search_by_address(address)
-  url = 'http://localhost:9200/test_topic/_search?pretty'
+  url = 'http://elasticsearch:9200/test_topic/_search?pretty'
   query = {
     "query"=>
     {"multi_match"=>

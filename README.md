@@ -11,7 +11,7 @@ This proof of concept simulate a customer profiles kafka stream connected to Ela
 ## Quick start
 To automatically launch the process from docker up to exec rspec run:
 ```sh
-./setup_and_run.sh
+./scripts/run.sh
 ```
 
 ## Test Cases

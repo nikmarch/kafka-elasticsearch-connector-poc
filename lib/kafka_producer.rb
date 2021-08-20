@@ -6,7 +6,7 @@ require 'faker'
 class KafkaProducer
   def initialize
     @topic = 'test_topic'
-    @kafka = Kafka.new "localhost:9092", client_id: "console_test"
+    @kafka = Kafka.new "kafka:19092", client_id: "console_test"
   end
 
   def push_customer(customer, attempt = 1)
@@ -15,12 +15,12 @@ class KafkaProducer
     @kafka.deliver_message payload, topic: @topic, key: key
     puts "#{key} published"
     # puts payload
-  rescue Kafka::LeaderNotAvailable => e
-    if attempt > 3
+  rescue => e # TODO replace by implicit Kafka exception
+    if attempt > 5
       raise e
     end
     puts "Kafka Connection error attempt: #{attempt}"
-    sleep 2
+    sleep 5
     push_customer customer, attempt + 1
   end
 end
