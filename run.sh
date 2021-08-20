@@ -4,4 +4,4 @@ echo -e "\nDestroy old docker environment\n" && \
   echo -e "\nBuild new docker environment\n" && \
   docker-compose up -d  --build && \
   echo -e "\nRun data provisioners\n" && \
-  docker-compose exec rspec ./setup.sh
+  docker-compose exec rspec_container ./docker_run.sh
