@@ -1,12 +1,12 @@
 require 'rest-client'
 require 'json'
 
-def search_by_full_address(address)
-  url = 'http://elasticsearch:9200/test_topic/_search?pretty'
+def search_by_full_address(searchable_address, shop)
+  url = "http://elasticsearch:9200/test_topic_for_#{shop}/_search?pretty"
   query = {
     "query"=>
     {"multi_match"=>
-     {"query"=>address,
+     {"query"=>searchable_address,
       "type"=>"bool_prefix",
       "operator"=>"and",
       "fuzziness"=> 1,
