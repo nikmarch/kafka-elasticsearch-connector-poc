@@ -17,8 +17,11 @@ bundle exec ruby lib/seed/test_cases.rb
 echo -e "\nSetup fake cases."
 bundle exec ruby lib/seed/fake_cases.rb
 
-echo -e "\nSetup custom mapping and kafka connector."
-bundle exec ruby lib/build_connector.rb
+echo -e "\nSetup custom mappings."
+bundle exec ruby lib/build_mappings.rb
+
+echo -e "\nSetup kafka connectors."
+bundle exec ruby lib/build_connectors.rb
 
 echo -e "\nWait for connector to transfer data to Elasticsearch\n"
 sleep 30
