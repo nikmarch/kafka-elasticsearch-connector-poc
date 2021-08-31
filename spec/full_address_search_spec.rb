@@ -2,7 +2,7 @@ require 'spec_helper.rb'
 require 'yaml'
 require_relative '../lib/search_by_full_address.rb'
 
-customers = YAML.load(File.read('./lib/seed/customers.yaml'))
+customers = YAML.load(File.read('./test_cases/customers.yaml'))
 
 describe 'Full address search' do
   customers.map do |customer|

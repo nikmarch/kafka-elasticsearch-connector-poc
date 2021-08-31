@@ -13,8 +13,7 @@ class KafkaProducer
     key = customer.fetch('uuid')
     payload = JSON.generate customer
     @kafka.deliver_message payload, topic: @topic, key: key
-    puts "#{key} published"
-    # puts payload
+    # puts "#{key} published"
   rescue => e # TODO replace by implicit Kafka exception
     if attempt > 5
       raise e
