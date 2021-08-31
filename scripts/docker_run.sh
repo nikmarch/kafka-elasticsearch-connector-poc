@@ -12,16 +12,16 @@ until $(curl --output /dev/null --silent --head --fail http://kafka_connect:8083
 done
 
 echo -e "\nSetup test cases."
-bundle exec ruby lib/seed/test_cases.rb
+bundle exec ruby setup/setup_test_cases.rb
 
 echo -e "\nSetup fake cases."
-bundle exec ruby lib/seed/fake_cases.rb
+bundle exec ruby setup/setup_fake_cases.rb
 
 echo -e "\nSetup custom mappings."
-bundle exec ruby lib/build_mappings.rb
+bundle exec ruby setup/setup_mappings.rb
 
 echo -e "\nSetup kafka connectors."
-bundle exec ruby lib/build_connectors.rb
+bundle exec ruby setup/setup_connectors.rb
 
 echo -e "\nWait for connector to transfer data to Elasticsearch\n"
 sleep 30
