@@ -3,7 +3,7 @@
   addresses:
     - full_address: John Doe 123 first St. Apt A San Jose CA, 20112
     - full_address: John Doe 4566 2nd St. Apt A Springfield WA, 80112
-    - full_address: 12325 Green Valley Dr Oklahoma City, OK 73120-8842
+    - full_address: John Doe 12325 Green Valley Dr Oklahoma City, OK 73120-8842
   test_cases:
     - john doe 20112
     - john doe second street 80112
