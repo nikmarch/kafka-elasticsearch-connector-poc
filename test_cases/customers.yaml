@@ -14,9 +14,11 @@
   addresses:
     - full_address: John Castilio 123 Main St. Apt A New Haule Ranch CA, 80212
     - full_address: John Castilio 9 Portabello Ave Fontana PR, 44044
+    - full_address: John Castilio 12325 Green Valley Dr Oklahoma City, OK 73120
   test_cases:
     - john castilio
     - john 44044 portabello
+    - 12325 Green Valley 73120
 
 - uuid: A79E7862-6300-4F88-B644-3712D0A31BC8
   shop: us
