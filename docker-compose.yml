@@ -70,8 +70,6 @@ services:
       CONNECT_INTERNAL_KEY_CONVERTER_SCHEMAS_ENABLE: "false"
       CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_INTERNAL_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
-    depends_on:
-      - kafka
 
   rspec_container:
     build:
